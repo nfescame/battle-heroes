@@ -1,0 +1,20 @@
+.sectionSearch {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+}
+.sectionSearch .containerSearch {
+  display: flex;
+  justify-content: space-between;
+  width: 25rem;
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.sectionSearch .containerSearch .inputSearch {
+  width: 90%;
+  height: 2.5rem;
+  font-size: 1.5rem;
+}
