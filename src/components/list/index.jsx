@@ -1,16 +1,21 @@
-import React, { useState, useEffect } from "react";
-import CardHeroes from "../../components/card/CardHeroes";
-import Search from "../../components/search/Search";
+import React, { useEffect, useState } from "react";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+
+import Search from "../searchBar/Search";
+import CardHeroe from "../card/CardHeroes";
+
 import { AuthContext } from "../../providers/auth";
 
-export default function Home() {
-  const [search, setSearch] = useState("batman");
+export default function ListHeroes() {
   const data = React.useContext(AuthContext);
   const [state, setState] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     async function getData() {
       await setState(data.provider);
+      console.log(state);
     }
     getData();
   }, []);
@@ -32,13 +37,17 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <Box sx={{ flexGrow: 1 }}>
       <Search handleChange={handleChange} search={search} />
-      <section className='row'>
-        {state.map((item) => {
-          return <CardHeroes item={item} />;
+      <Grid container spacing={4}>
+        {state.map((item, index) => {
+          return (
+            <Grid item lg={2} md={3} sm={4} xs={12}>
+              {<CardHeroe item={item} />}
+            </Grid>
+          );
         })}
-      </section>
-    </div>
+      </Grid>
+    </Box>
   );
 }

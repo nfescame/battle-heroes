@@ -11,6 +11,10 @@ import SideBar from "../sideBar/SideBar";
 export default function ButtonAppBar() {
   const [isOpen, SetIsOpen] = useState(false);
 
+  const handleDrawer = () => {
+    SetIsOpen(isOpen === false ? true : false);
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static'>
@@ -27,11 +31,13 @@ export default function ButtonAppBar() {
           </IconButton>
 
           <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-            Batlle Heroes
+            Battle Heroes
           </Typography>
         </Toolbar>
       </AppBar>
-      {isOpen === true ? <SideBar /> : null}
+      {isOpen === true ? (
+        <SideBar isOpen={isOpen} handleDrawer={handleDrawer} />
+      ) : null}
     </Box>
   );
 }

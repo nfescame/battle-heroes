@@ -1,7 +1,7 @@
 /* Float four columns side by side */
 .column {
   float: left;
-  width: 15%;
+  width: 100%;
   padding: 10px 10px;
 }
 
@@ -9,31 +9,30 @@
 .row {
   margin: 0 -5px;
 }
-
-/* Responsive columns */
-@media screen and (max-width: 600px) {
-  .column {
-    width: 90%;
-    display: block;
-    margin-bottom: 20px;
-  }
-}
-
-/* Style the counter cards */
 .card {
   width: 100%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 2px;
   text-align: center;
   background-color: #f1f1f1;
 }
 .card .cardContext {
-  background-color: #150050;
+  background-color: #494650;
 }
 .card .cardContext .title {
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
-  height: 5rem;
+  height: 2.5rem;
+  font-weight: 900;
+}
+
+@media screen and (max-width: 600px) {
+  .row {
+    display: flex;
+    justify-content: center;
+  }
+  .column {
+    width: 90%;
+    display: block;
+  }
 }

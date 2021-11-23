@@ -1,5 +1,5 @@
 .sectionSearch {
-  width: 100%;
+  width: 50%;
   height: 3.5rem;
   display: flex;
   justify-content: center;
@@ -7,7 +7,7 @@
 .sectionSearch .containerSearch {
   display: flex;
   justify-content: space-between;
-  width: 25rem;
+  width: 100%;
   border: 1px solid #000;
   border-radius: 10px;
   padding: 0.5rem;
