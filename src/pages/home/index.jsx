@@ -1,6 +1,6 @@
 import React from "react";
 import img from "../../img/background-battle-heroes.jpg";
-import "./main.css";
+import "./style.css";
 
 export default function Main() {
   return (

@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 
-import SideBar from "../sideBar/SideBar";
+import SideBar from "../sideBar";
 
 export default function ButtonAppBar() {
   const [isOpen, SetIsOpen] = useState(false);

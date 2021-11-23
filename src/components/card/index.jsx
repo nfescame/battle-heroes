@@ -6,15 +6,13 @@ import Typography from "@material-ui/core/Typography";
 
 import { CardActionArea } from "@material-ui/core";
 
-import "./card.css";
-
 export default function CardHeroes(props) {
   const { item } = props;
 
   return (
-    <div key={item.id} className='column'>
-      <Card className='card'>
-        <CardActionArea className='cardContext'>
+    <div key={item.id}>
+      <Card>
+        <CardActionArea>
           <CardMedia
             component='img'
             image={item.images.sm}

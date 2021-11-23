@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Auth } from "../providers/auth";
 
-import NavBar from "../components/navBar/NavBar";
-import Main from "../pages/main/Main";
-import ListHeroes from "../components/list";
+import NavBar from "../components/navBar";
+import Home from "../pages/home";
+import ListHeroes from "../pages/list";
 
 function Router() {
   return (
@@ -12,7 +12,7 @@ function Router() {
       <Auth>
         <NavBar />
         <Routes>
-          <Route path='/' element={<Main />} />
+          <Route path='/' element={<Home />} />
           <Route path='/list' element={<ListHeroes />} />
         </Routes>
       </Auth>
