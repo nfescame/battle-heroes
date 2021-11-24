@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import CardContent from "@mui/material/CardContent";
-import Card from "@mui/material/Card";
-import CardActionArea from "@mui/material/CardActionArea";
 import {
+  Button,
+  Dialog,
+  CardContent,
+  Card,
+  CardActionArea,
   CardMedia,
   Typography,
   Box,
   List,
   ListItem,
   ListItemText,
-} from "@mui/material";
+  ListItemIcon,
+} from "@material-ui/core";
 
-import ListItemIcon from "@mui/material/ListItemIcon";
 import CircleIcon from "@mui/icons-material/Circle";
 
 import img from "../../img/backgroung_dialog.jpg";

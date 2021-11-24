@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
+import { Box, Grid } from "@material-ui/core";
 
 import Search from "../../components/searchBar";
 import CardHeroe from "../../components/card";

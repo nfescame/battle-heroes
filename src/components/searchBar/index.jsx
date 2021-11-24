@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import MenuItem from "@mui/material/MenuItem";
+
+import { Box, TextField, MenuItem } from "@material-ui/core";
 
 import { AuthContext } from "../../providers/auth";
 
