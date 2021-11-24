@@ -27,7 +27,7 @@ export default function SearchBar(props) {
       }
     };
     getPublisher();
-  }, [data]);
+  }, []);
 
   return (
     <Box

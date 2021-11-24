@@ -31,8 +31,6 @@ export default function DialogBattle(props) {
     "combat",
   ]);
 
-  // console.log(totalPowerstatsP1, totalPowerstatsP2);
-
   useEffect(() => {
     const getList = async () => {
       try {

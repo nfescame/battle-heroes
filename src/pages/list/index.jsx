@@ -29,7 +29,7 @@ export default function ListHeroes() {
       }
     };
     getList();
-  }, [data]);
+  }, []);
 
   function handleChange(e) {
     let newArr = [];

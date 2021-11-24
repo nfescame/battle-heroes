@@ -15,7 +15,7 @@ export const Auth = (props) => {
     })();
 
     return () => {};
-  }, []);
+  }, [provider]);
 
   return (
     <AuthContext.Provider value={{ provider }}>
