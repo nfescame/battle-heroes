@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 
 import Search from "../../components/searchBar";
 import CardHeroe from "../../components/card";
-import DialogBattle from "../../components/dialog/DialogBattle";
+import DialogBattle from "../../components/dialog";
 
 import { AuthContext } from "../../providers/auth";
 
@@ -20,7 +20,7 @@ export default function ListHeroes() {
   useEffect(() => {
     const getList = async () => {
       try {
-        const allList = data.provider.map((item) => {
+        const allList = await data.provider.map((item) => {
           return item;
         });
         setState(allList);

@@ -10,27 +10,26 @@ export default function CardHeroes(props) {
   const { item } = props;
 
   return (
-    <div key={item.id}>
-      <Card>
-        <CardActionArea>
-          <CardMedia
-            component='img'
-            image={item.images.sm}
-            alt='green iguana'
-          />
+    <Card sx={{ maxWidth: "100%", borderRadius: "15px" }}>
+      <CardActionArea sx={{}}>
+        <CardMedia component='img' image={item.images.sm} alt={item.name} />
 
-          <CardContent>
-            <Typography
-              className='title'
-              gutterBottom
-              variant='h5'
-              component='div'
-            >
-              {item.name}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-    </div>
+        <CardContent sx={{ backgroundColor: "#1976D2" }}>
+          <Typography
+            sx={{
+              height: "5rem",
+              textAlign: "center",
+              color: "white",
+            }}
+            className='title'
+            gutterBottom
+            variant='h5'
+            component='div'
+          >
+            {item.name}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
   );
 }
