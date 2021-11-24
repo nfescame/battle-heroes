@@ -34,7 +34,7 @@ export default function DialogBattle(props) {
   useEffect(() => {
     const getList = async () => {
       try {
-        const totalPowerstatsP1 = [
+        const totalPowerstatsP1 = await [
           selectBattle.player1.powerstats.intelligence +
             selectBattle.player1.powerstats.strength +
             selectBattle.player1.powerstats.speed +
@@ -42,7 +42,7 @@ export default function DialogBattle(props) {
             selectBattle.player1.powerstats.power +
             selectBattle.player1.powerstats.combat,
         ];
-        const totalPowerstatsP2 = [
+        const totalPowerstatsP2 = await [
           selectBattle.player2.powerstats.intelligence +
             selectBattle.player2.powerstats.strength +
             selectBattle.player2.powerstats.speed +
@@ -60,6 +60,7 @@ export default function DialogBattle(props) {
       }
     };
     getList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

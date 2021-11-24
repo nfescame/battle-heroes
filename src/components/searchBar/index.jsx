@@ -15,7 +15,7 @@ export default function SearchBar(props) {
   useEffect(() => {
     const getPublisher = async () => {
       try {
-        const allPublisher = data.provider.map((item) => {
+        const allPublisher = await data.provider.map((item) => {
           return item.biography.publisher;
         });
         let publisherFilter = allPublisher.filter(
@@ -27,7 +27,7 @@ export default function SearchBar(props) {
       }
     };
     getPublisher();
-  }, []);
+  }, [data.provider]);
 
   return (
     <Box

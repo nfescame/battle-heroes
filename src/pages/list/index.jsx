@@ -18,18 +18,12 @@ export default function ListHeroes() {
   });
 
   useEffect(() => {
-    const getList = async () => {
-      try {
-        const allList = await data.provider.map((item) => {
-          return item;
-        });
-        setState(allList);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    getList();
-  }, []);
+    const allList = data.provider.map((item) => {
+      return item;
+    });
+
+    setState(allList);
+  }, [data]);
 
   function handleChange(e) {
     let newArr = [];
