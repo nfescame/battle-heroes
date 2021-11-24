@@ -11,7 +11,6 @@ import {
   List,
   ListItem,
   ListItemText,
-  Grid,
 } from "@mui/material";
 
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -85,9 +84,17 @@ export default function DialogBattle(props) {
         },
       }}
     >
-      <Typography sx={{ color: "Black", fontSize: "2rem" }}>
+      <Typography
+        component={"span"}
+        variant={"body2"}
+        sx={{ color: "Black", fontSize: "2rem" }}
+      >
         Winner{" "}
-        <Typography sx={{ color: "white", fontSize: "2rem" }}>
+        <Typography
+          component={"span"}
+          variant={"body2"}
+          sx={{ color: "white", fontSize: "2rem" }}
+        >
           {winner}
         </Typography>
       </Typography>
@@ -246,9 +253,9 @@ export default function DialogBattle(props) {
         <Box>
           <CardContent>
             <List sx={{ display: "block" }}>
-              {powerstats.map((powerstat) => {
+              {powerstats.map((powerstat, index) => {
                 return (
-                  <ListItem disablePadding>
+                  <ListItem disablePadding key={index}>
                     <ListItemText primary={powerstat} />
                   </ListItem>
                 );

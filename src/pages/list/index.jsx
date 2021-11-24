@@ -91,16 +91,16 @@ export default function ListHeroes() {
         handleChangePublisher={handleChangePublisher}
       />
       <Grid container spacing={4}>
-        {state.map((item, index) => {
+        {state.map((item) => {
           return (
             <Grid
               onClick={() => handleBattle(item)}
+              key={item.id}
               item
               lg={2}
               md={3}
               sm={4}
               xs={12}
-              key={item.id}
             >
               {<CardHeroe item={item} />}
             </Grid>
