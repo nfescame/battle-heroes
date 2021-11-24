@@ -7,14 +7,12 @@ export const Auth = (props) => {
   const [provider, setProviders] = useState([]);
 
   useEffect(() => {
-    (async () => {
-      try {
-        const result = await api.get();
-        setProviders(result.data);
-      } catch (err) {}
-    })();
+    api.get().then(({ data }) => {
+      setProviders(data);
+    });
+    console.log(provider);
 
-    return () => {};
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
