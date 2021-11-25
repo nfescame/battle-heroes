@@ -10,8 +10,6 @@ export const Auth = (props) => {
     api.get().then(({ data }) => {
       setProviders(data);
     });
-    console.log(provider);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

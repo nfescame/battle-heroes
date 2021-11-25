@@ -4,11 +4,13 @@ import { Box, Grid } from "@material-ui/core";
 import Search from "../../components/searchBar";
 import CardHeroe from "../../components/card";
 import DialogBattle from "../../components/dialog";
+import Alerts from "../../components/alert";
 
 import { AuthContext } from "../../providers/auth";
 
 export default function ListHeroes() {
   const data = React.useContext(AuthContext);
+  const [isOpenAlert, setIsOpenAlert] = useState(false);
   const [isOpenDialog, setIsOpenDialog] = useState(false);
   const [state, setState] = useState([]);
   const [selectBattle, setSelectBattle] = useState({
@@ -60,12 +62,17 @@ export default function ListHeroes() {
         [name]: Heroe,
       }));
     } else {
-      const name = "player2";
-      setSelectBattle((prevState) => ({
-        ...prevState,
-        [name]: Heroe,
-      }));
-      setIsOpenDialog(true);
+      if (selectBattle.player1.id !== Heroe.id) {
+        setIsOpenAlert(false);
+        const name = "player2";
+        setSelectBattle((prevState) => ({
+          ...prevState,
+          [name]: Heroe,
+        }));
+        setIsOpenDialog(true);
+      } else {
+        setIsOpenAlert(true);
+      }
     }
   }
 
@@ -78,12 +85,16 @@ export default function ListHeroes() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, padding: "1rem" }}>
+      {isOpenAlert === true ? (
+        <Alerts selectHeroesName={selectBattle.player1.name} />
+      ) : null}
+
       <Search
         handleChange={handleChange}
         handleChangePublisher={handleChangePublisher}
       />
-      <Grid container spacing={4}>
+      <Grid container spacing={3}>
         {state.map((item) => {
           return (
             <Grid

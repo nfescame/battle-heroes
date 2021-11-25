@@ -11,25 +11,25 @@ import {
   List,
   ListItem,
   ListItemText,
-  ListItemIcon,
+  Grid,
 } from "@material-ui/core";
 
-import CircleIcon from "@mui/icons-material/Circle";
-
 import img from "../../img/backgroung_dialog.jpg";
+
+import ListItemComponent from "../listItemComponent";
 
 export default function DialogBattle(props) {
   const { isOpenDialog, handleClose, selectBattle } = props;
   const [winner, setWinner] = useState("");
-  const [colorIcon] = useState(["red", "green"]);
-  const [powerstats] = useState([
+
+  const powerstatsList = [
     "intelligence",
     "strength",
     "speed",
     "durability",
     "power",
     "combat",
-  ]);
+  ];
 
   useEffect(() => {
     const getList = async () => {
@@ -65,7 +65,7 @@ export default function DialogBattle(props) {
 
   return (
     <Dialog
-      sx={{ width: "100%", height: "auto" }}
+      maxWidth='lg'
       open={isOpenDialog}
       onClose={handleClose}
       aria-labelledby='alert-dialog-title'
@@ -74,8 +74,7 @@ export default function DialogBattle(props) {
         style: {
           backgroundImage: `url(${img})`,
           borderRadius: "15px",
-          backgroundColor: "red",
-          paddingTop: "5rem",
+          padding: "2rem",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -86,7 +85,7 @@ export default function DialogBattle(props) {
       <Typography
         component={"span"}
         variant={"body2"}
-        sx={{ color: "Black", fontSize: "2rem" }}
+        sx={{ color: "green", fontSize: "2rem" }}
       >
         Winner{" "}
         <Typography
@@ -98,314 +97,202 @@ export default function DialogBattle(props) {
         </Typography>
       </Typography>
 
-      <Box sx={{ display: "flex" }}>
-        {/* card 1 */}
-        <Box sx={{ display: "flex" }}>
-          <Card sx={{ maxWidth: "100%", borderRadius: "15px" }}>
-            <CardActionArea sx={{}}>
-              <CardMedia
-                height='200'
-                component='img'
-                image={selectBattle.player1.images.sm}
-                alt={selectBattle.player1.name}
-              />
-
-              <CardContent sx={{ backgroundColor: "#1976D2" }}>
-                <Typography
-                  sx={{
-                    height: "5rem",
-                    textAlign: "center",
-                    color: "white",
-                  }}
-                  className='title'
-                  gutterBottom
-                  variant='h5'
-                  component='div'
-                >
-                  {selectBattle.player1.name}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-
-          <CardContent>
-            <List>
-              <ListItem disablePadding>
-                <ListItemText
-                  primary={selectBattle.player1.powerstats.intelligence}
+      <Grid container spacing={0}>
+        <Grid item lg={4} md={4} sm={4} xs={12}>
+          {/* card 1 */}
+          <Box sx={{ display: "flex" }}>
+            <Card sx={{ maxWidth: "100%", borderRadius: "10px" }}>
+              <CardActionArea>
+                <CardMedia
+                  component='img'
+                  image={selectBattle.player1.images.sm}
+                  alt={selectBattle.player1.name}
                 />
-                <ListItemIcon>
-                  <CircleIcon
+
+                <CardContent sx={{ backgroundColor: "#1976D2" }}>
+                  <Typography
                     sx={{
-                      pl: 4,
-                      color:
-                        colorIcon[
-                          selectBattle.player1.powerstats.intelligence <
-                          selectBattle.player2.powerstats.intelligence
-                            ? 0
-                            : 1
-                        ],
+                      height: "5rem",
+                      textAlign: "start",
+                      color: "white",
+                      fontSize: "1rem",
                     }}
-                  />
-                </ListItemIcon>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemText
-                  primary={selectBattle.player1.powerstats.strength}
+                    className='title'
+                    gutterBottom
+                    variant='h6'
+                    component='div'
+                  >
+                    {selectBattle.player1.name}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+
+            <CardContent sx={{ paddingRight: "0" }}>
+              <List>
+                <ListItemComponent
+                  tg={"player1"}
+                  paddingLeft={4}
+                  player1Intelligence={
+                    selectBattle.player1.powerstats.intelligence
+                  }
+                  player2Intelligence={
+                    selectBattle.player2.powerstats.intelligence
+                  }
                 />
-                <ListItemIcon>
-                  <CircleIcon
-                    sx={{
-                      pl: 4,
-                      color:
-                        colorIcon[
-                          selectBattle.player1.powerstats.strength <
-                          selectBattle.player2.powerstats.strength
-                            ? 0
-                            : 1
-                        ],
-                    }}
-                  />
-                </ListItemIcon>
-              </ListItem>
-
-              <ListItem disablePadding>
-                <ListItemText primary={selectBattle.player1.powerstats.speed} />
-                <ListItemIcon>
-                  <CircleIcon
-                    sx={{
-                      pl: 4,
-                      color:
-                        colorIcon[
-                          selectBattle.player1.powerstats.speed <
-                          selectBattle.player2.powerstats.speed
-                            ? 0
-                            : 1
-                        ],
-                    }}
-                  />
-                </ListItemIcon>
-              </ListItem>
-
-              <ListItem disablePadding>
-                <ListItemText
-                  primary={selectBattle.player1.powerstats.durability}
+                <ListItemComponent
+                  tg={"player1"}
+                  paddingLeft={4}
+                  player1Intelligence={selectBattle.player1.powerstats.strength}
+                  player2Intelligence={selectBattle.player2.powerstats.strength}
                 />
-                <ListItemIcon>
-                  <CircleIcon
-                    sx={{
-                      pl: 4,
-                      color:
-                        colorIcon[
-                          selectBattle.player1.powerstats.durability <
-                          selectBattle.player2.powerstats.durability
-                            ? 0
-                            : 1
-                        ],
-                    }}
-                  />
-                </ListItemIcon>
-              </ListItem>
-
-              <ListItem disablePadding>
-                <ListItemText primary={selectBattle.player1.powerstats.power} />
-                <ListItemIcon>
-                  <CircleIcon
-                    sx={{
-                      pl: 4,
-                      color:
-                        colorIcon[
-                          selectBattle.player1.powerstats.power <
-                          selectBattle.player2.powerstats.power
-                            ? 0
-                            : 1
-                        ],
-                    }}
-                  />
-                </ListItemIcon>
-              </ListItem>
-
-              <ListItem disablePadding>
-                <ListItemText
-                  primary={selectBattle.player1.powerstats.combat}
+                <ListItemComponent
+                  tg={"player1"}
+                  paddingLeft={4}
+                  player1Intelligence={selectBattle.player1.powerstats.speed}
+                  player2Intelligence={selectBattle.player2.powerstats.speed}
                 />
-                <ListItemIcon>
-                  <CircleIcon
-                    sx={{
-                      pl: 4,
-                      color:
-                        colorIcon[
-                          selectBattle.player1.powerstats.combat <
-                          selectBattle.player2.powerstats.combat
-                            ? 0
-                            : 1
-                        ],
-                    }}
-                  />
-                </ListItemIcon>
-              </ListItem>
-            </List>
-          </CardContent>
-        </Box>
-
-        {/* powerstats */}
-        <Box>
-          <CardContent>
-            <List sx={{ display: "block" }}>
-              {powerstats.map((powerstat, index) => {
-                return (
-                  <ListItem disablePadding key={index}>
-                    <ListItemText primary={powerstat} />
-                  </ListItem>
-                );
-              })}
-            </List>
-          </CardContent>
-        </Box>
-
-        {/* card 2 */}
-        <Box sx={{ display: "flex" }}>
-          <CardContent>
-            <List>
-              <ListItem disablePadding>
-                <ListItemIcon>
-                  <CircleIcon
-                    sx={{
-                      color:
-                        colorIcon[
-                          selectBattle.player2.powerstats.intelligence <
-                          selectBattle.player1.powerstats.intelligence
-                            ? 0
-                            : 1
-                        ],
-                    }}
-                  />
-                </ListItemIcon>
-                <ListItemText
-                  primary={selectBattle.player2.powerstats.intelligence}
+                <ListItemComponent
+                  tg={"player1"}
+                  paddingLeft={4}
+                  player1Intelligence={
+                    selectBattle.player1.powerstats.durability
+                  }
+                  player2Intelligence={
+                    selectBattle.player2.powerstats.durability
+                  }
                 />
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemIcon>
-                  <CircleIcon
-                    sx={{
-                      color:
-                        colorIcon[
-                          selectBattle.player2.powerstats.strength <
-                          selectBattle.player1.powerstats.strength
-                            ? 0
-                            : 1
-                        ],
-                    }}
-                  />
-                </ListItemIcon>
-                <ListItemText
-                  primary={selectBattle.player2.powerstats.strength}
+                <ListItemComponent
+                  tg={"player1"}
+                  paddingLeft={4}
+                  player1Intelligence={selectBattle.player1.powerstats.power}
+                  player2Intelligence={selectBattle.player2.powerstats.power}
                 />
-              </ListItem>
-
-              <ListItem disablePadding>
-                <ListItemIcon>
-                  <CircleIcon
-                    sx={{
-                      color:
-                        colorIcon[
-                          selectBattle.player2.powerstats.speed <
-                          selectBattle.player1.powerstats.speed
-                            ? 0
-                            : 1
-                        ],
-                    }}
-                  />
-                </ListItemIcon>
-                <ListItemText primary={selectBattle.player2.powerstats.speed} />
-              </ListItem>
-
-              <ListItem disablePadding>
-                <ListItemIcon>
-                  <CircleIcon
-                    sx={{
-                      color:
-                        colorIcon[
-                          selectBattle.player2.powerstats.durability <
-                          selectBattle.player1.powerstats.durability
-                            ? 0
-                            : 1
-                        ],
-                    }}
-                  />
-                </ListItemIcon>
-                <ListItemText
-                  primary={selectBattle.player2.powerstats.durability}
+                <ListItemComponent
+                  tg={"player1"}
+                  paddingLeft={4}
+                  player1Intelligence={selectBattle.player1.powerstats.combat}
+                  player2Intelligence={selectBattle.player2.powerstats.combat}
                 />
-              </ListItem>
-
-              <ListItem disablePadding>
-                <ListItemIcon>
-                  <CircleIcon
-                    sx={{
-                      color:
-                        colorIcon[
-                          selectBattle.player2.powerstats.power <
-                          selectBattle.player1.powerstats.power
-                            ? 0
-                            : 1
-                        ],
-                    }}
-                  />
-                </ListItemIcon>
-                <ListItemText primary={selectBattle.player2.powerstats.power} />
-              </ListItem>
-
-              <ListItem disablePadding>
-                <ListItemIcon>
-                  <CircleIcon
-                    sx={{
-                      color:
-                        colorIcon[
-                          selectBattle.player2.powerstats.combat <
-                          selectBattle.player1.powerstats.combat
-                            ? 0
-                            : 1
-                        ],
-                    }}
-                  />
-                </ListItemIcon>
-                <ListItemText
-                  primary={selectBattle.player2.powerstats.combat}
+              </List>
+            </CardContent>
+          </Box>
+        </Grid>
+        <Grid item lg={4} md={4} sm={4} xs={12}>
+          {/* powerstats */}
+          <Box>
+            <CardContent sx={{ paddingLeft: "0", paddingRight: "0" }}>
+              <List>
+                {powerstatsList.map((powerstat, index) => {
+                  return (
+                    <ListItem
+                      key={index}
+                      disablePadding
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        textAlign: "center",
+                      }}
+                    >
+                      <ListItemText
+                        primary={powerstat}
+                        sx={{
+                          color: "white",
+                          fontSize: "1.5rem",
+                        }}
+                        disableTypography
+                      />
+                    </ListItem>
+                  );
+                })}
+              </List>
+            </CardContent>
+          </Box>
+        </Grid>
+        <Grid item lg={4} md={4} sm={4} xs={12}>
+          {/* card 2 */}
+          <Box sx={{ display: "flex" }}>
+            <CardContent sx={{ paddingLeft: "0" }}>
+              <List>
+                <ListItemComponent
+                  tg={"player2"}
+                  paddingLeft={0}
+                  player1Intelligence={
+                    selectBattle.player1.powerstats.intelligence
+                  }
+                  player2Intelligence={
+                    selectBattle.player2.powerstats.intelligence
+                  }
                 />
-              </ListItem>
-            </List>
-          </CardContent>
+                <ListItemComponent
+                  tg={"player2"}
+                  paddingLeft={0}
+                  player1Intelligence={selectBattle.player1.powerstats.strength}
+                  player2Intelligence={selectBattle.player2.powerstats.strength}
+                />
+                <ListItemComponent
+                  tg={"player2"}
+                  paddingLeft={0}
+                  player1Intelligence={selectBattle.player1.powerstats.speed}
+                  player2Intelligence={selectBattle.player2.powerstats.speed}
+                />
+                <ListItemComponent
+                  tg={"player2"}
+                  paddingLeft={0}
+                  player1Intelligence={
+                    selectBattle.player1.powerstats.durability
+                  }
+                  player2Intelligence={
+                    selectBattle.player2.powerstats.durability
+                  }
+                />
+                <ListItemComponent
+                  tg={"player2"}
+                  paddingLeft={0}
+                  player1Intelligence={selectBattle.player1.powerstats.power}
+                  player2Intelligence={selectBattle.player2.powerstats.power}
+                />
+                <ListItemComponent
+                  tg={"player2"}
+                  paddingLeft={0}
+                  player1Intelligence={selectBattle.player1.powerstats.combat}
+                  player2Intelligence={selectBattle.player2.powerstats.combat}
+                />
+              </List>
+            </CardContent>
 
-          <Card sx={{ maxWidth: "100%", borderRadius: "15px" }}>
-            <CardActionArea sx={{}}>
-              <CardMedia
-                component='img'
-                height='200'
-                image={selectBattle.player2.images.sm}
-                alt={selectBattle.player2.name}
-              />
+            <Card sx={{ maxWidth: "100%", borderRadius: "10px" }}>
+              <CardActionArea>
+                <CardMedia
+                  component='img'
+                  image={selectBattle.player2.images.sm}
+                  alt={selectBattle.player2.name}
+                />
 
-              <CardContent sx={{ backgroundColor: "#1976D2" }}>
-                <Typography
-                  sx={{
-                    height: "5rem",
-                    textAlign: "center",
-                    color: "white",
-                  }}
-                  className='title'
-                  gutterBottom
-                  variant='h5'
-                  component='div'
-                >
-                  {selectBattle.player2.name}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-        </Box>
-      </Box>
+                <CardContent sx={{ backgroundColor: "#1976D2" }}>
+                  <Typography
+                    sx={{
+                      height: "5rem",
+                      textAlign: "end",
+                      color: "white",
+                      fontsize: "1rem",
+                    }}
+                    className='title'
+                    gutterBottom
+                    variant='h6'
+                    component='div'
+                  >
+                    {selectBattle.player2.name}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Box>
+        </Grid>
+      </Grid>
+
+      {/* </Box> */}
 
       <Button onClick={handleClose} autoFocus>
         Close
