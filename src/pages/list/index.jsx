@@ -99,8 +99,11 @@ export default function ListHeroes() {
   };
 
   return (
-    <Box onClick={scrollTop} sx={{ flexGrow: 1, padding: "1rem" }}>
-      <ButtonTop />
+    <Box sx={{ flexGrow: 1, padding: "1rem" }}>
+      <Box onClick={scrollTop}>
+        <ButtonTop />
+      </Box>
+
       {isOpenAlert === true ? (
         <Alerts selectHeroesName={selectBattle.player1.name} />
       ) : null}
