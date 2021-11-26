@@ -52,8 +52,6 @@ export default function SearchBar(props) {
         sx={{
           m: 2,
           width: "100%",
-          borderRadius: "5px",
-          backgroundColor: "white",
         }}
       />
       <TextField

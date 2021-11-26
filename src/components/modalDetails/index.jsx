@@ -6,7 +6,7 @@ export default function ModalDetails(props) {
   const { item, handleClose, handleOpen, open } = props;
 
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <div style={{ display: "flex", justifyContent: "start" }}>
       <Stack sx={{}}>
         <Button
           variant='contained'
@@ -54,7 +54,14 @@ export default function ModalDetails(props) {
                 alignItems: "center",
               }}
             >
-              <h1 style={{ color: "#9F0013", padding: "2rem" }}>
+              <h1
+                style={{
+                  margin: "0",
+                  color: "#9F0013",
+                  paddingLeft: "2rem",
+                  paddingRight: "2rem",
+                }}
+              >
                 {item.name} Biography{" "}
               </h1>
 

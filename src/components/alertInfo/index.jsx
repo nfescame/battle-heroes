@@ -10,15 +10,15 @@ export default function Alerts(props) {
         width: "60%",
         position: "fixed",
         top: "1rem",
-        left: "10rem",
+        right: "10rem",
         zIndex: "100",
         display: "flex",
         justifyContent: "center",
       }}
       spacing={1}
     >
-      <Alert sx={{ width: "50%" }} variant='filled' severity='error'>
-        {selectHeroesName} already select
+      <Alert sx={{ width: "50%" }} variant='filled' severity='success'>
+        {selectHeroesName} select
       </Alert>
     </Box>
   );

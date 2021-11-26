@@ -5,6 +5,7 @@ import Search from "../../components/searchBar";
 import CardHeroe from "../../components/card";
 import DialogBattle from "../../components/dialog";
 import Alerts from "../../components/alert";
+import AlertsInfo from "../../components/alertInfo";
 
 import { AuthContext } from "../../providers/auth";
 
@@ -12,6 +13,7 @@ export default function ListHeroes() {
   const data = React.useContext(AuthContext);
 
   const [isOpenAlert, setIsOpenAlert] = useState(false);
+  const [isOpenAlertInfo, setIsOpenAlertInfo] = useState(false);
   const [isOpenDialog, setIsOpenDialog] = useState(false);
   const [state, setState] = useState([]);
   const [selectBattle, setSelectBattle] = useState({
@@ -20,11 +22,14 @@ export default function ListHeroes() {
   });
 
   useEffect(() => {
-    const allList = data.provider.map((item) => {
-      return item;
-    });
+    const fetchPosts = async () => {
+      const allList = data.provider.map((item) => {
+        return item;
+      });
+      setState(allList);
+    };
 
-    setState(allList);
+    fetchPosts();
   }, [data]);
 
   function handleChange(e) {
@@ -62,9 +67,11 @@ export default function ListHeroes() {
         ...prevState,
         [name]: Heroe,
       }));
+      setIsOpenAlertInfo(true);
     } else {
       if (selectBattle.player1.id !== Heroe.id) {
         setIsOpenAlert(false);
+        setIsOpenAlertInfo(false);
         const name = "player2";
         setSelectBattle((prevState) => ({
           ...prevState,
@@ -90,11 +97,16 @@ export default function ListHeroes() {
       {isOpenAlert === true ? (
         <Alerts selectHeroesName={selectBattle.player1.name} />
       ) : null}
+      {isOpenAlertInfo === true ? (
+        <AlertsInfo selectHeroesName={selectBattle.player1.name} />
+      ) : null}
 
       <Search
         handleChange={handleChange}
         handleChangePublisher={handleChangePublisher}
       />
+      {data.loading === true ? <h2>Loading...</h2> : null}
+
       <Grid container spacing={3}>
         {state.map((item) => {
           return (

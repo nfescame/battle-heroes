@@ -5,16 +5,24 @@ export const AuthContext = React.createContext({});
 
 export const Auth = (props) => {
   const [provider, setProviders] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    api.get().then(({ data }) => {
-      setProviders(data);
-    });
+    const fetchPosts = async () => {
+      setLoading(true);
+      const res = await api.get();
+      setProviders(res.data);
+      setLoading(false);
+    };
+
+    fetchPosts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  console.log(provider);
+
   return (
-    <AuthContext.Provider value={{ provider }}>
+    <AuthContext.Provider value={{ provider, loading }}>
       {props.children}
     </AuthContext.Provider>
   );
