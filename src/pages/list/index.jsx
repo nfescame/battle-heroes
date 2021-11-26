@@ -6,6 +6,8 @@ import CardHeroe from "../../components/card";
 import DialogBattle from "../../components/dialog";
 import Alerts from "../../components/alert";
 import AlertsInfo from "../../components/alertInfo";
+import Spinner from "../../components/spinner";
+import ButtonTop from "../../components/buttonTop";
 
 import { AuthContext } from "../../providers/auth";
 
@@ -92,8 +94,13 @@ export default function ListHeroes() {
     });
   };
 
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <Box sx={{ flexGrow: 1, padding: "1rem" }}>
+    <Box onClick={scrollTop} sx={{ flexGrow: 1, padding: "1rem" }}>
+      <ButtonTop />
       {isOpenAlert === true ? (
         <Alerts selectHeroesName={selectBattle.player1.name} />
       ) : null}
@@ -105,7 +112,11 @@ export default function ListHeroes() {
         handleChange={handleChange}
         handleChangePublisher={handleChangePublisher}
       />
-      {data.loading === true ? <h2>Loading...</h2> : null}
+      {data.loading === true ? (
+        <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+          <h2>Loading...</h2> <Spinner />
+        </Box>
+      ) : null}
 
       <Grid container spacing={3}>
         {state.map((item) => {

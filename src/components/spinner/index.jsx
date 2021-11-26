@@ -1,8 +1,7 @@
 import React from "react";
-import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
+import { CircularProgress, Box } from "@material-ui/core";
 
-export default function CircularIndeterminate() {
+export default function Spinner() {
   return (
     <Box sx={{ display: "flex" }}>
       <CircularProgress />
