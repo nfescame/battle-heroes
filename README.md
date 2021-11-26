@@ -1,4 +1,4 @@
-# Desafio tecnico Azap [Click](https://battle-heroes.netlify.app/list).
+# Desafio tecnico Azap 
 
 ## Deploy [Click](https://battle-heroes.netlify.app/list) .
 
