@@ -1,8 +1,9 @@
-# Desafio tecnico Azap  [Click](https://battle-heroes.netlify.app/list).
+# Desafio tecnico Azap [Click](https://battle-heroes.netlify.app/list).
 
 ## Deploy [Click](https://battle-heroes.netlify.app/list) .
 
 ## Tarefas
+
 o controle das tarefas desse projeto será realizado no GitHub
 
 ## Icones
