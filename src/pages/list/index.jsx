@@ -10,6 +10,7 @@ import { AuthContext } from "../../providers/auth";
 
 export default function ListHeroes() {
   const data = React.useContext(AuthContext);
+
   const [isOpenAlert, setIsOpenAlert] = useState(false);
   const [isOpenDialog, setIsOpenDialog] = useState(false);
   const [state, setState] = useState([]);

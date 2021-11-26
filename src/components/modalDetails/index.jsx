@@ -1,71 +1,70 @@
 import React from "react";
 
-import Button from "@mui/material/Button";
-import Modal from "@mui/material/Modal";
-import List from "@mui/material/List";
+import { Button, Stack, List, Dialog } from "@material-ui/core";
 
 export default function ModalDetails(props) {
-  const { item } = props;
-
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const { item, handleClose, handleOpen, open } = props;
 
   return (
-    <div>
-      <Button
-        variant='contained'
-        sx={{ top: "3rem", left: "1rem", zIndex: "100" }}
-        onClick={handleOpen}
-      >
-        Details
-      </Button>
-      <Modal
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <Stack sx={{}}>
+        <Button
+          variant='contained'
+          color='error'
+          sx={{
+            color: "#ffffff",
+            position: "absolute",
+            zIndex: "90",
+            backgroundColor: "#9F0013",
+          }}
+          onClick={handleOpen}
+        >
+          Details
+        </Button>
+      </Stack>
+
+      <Dialog
+        sx={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          textAlign: "center",
+        }}
         open={open}
         onClose={handleClose}
         aria-labelledby='modal-modal-title'
         aria-describedby='modal-modal-description'
       >
-        <List
-          sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
-        >
+        <List sx={{ width: "90%" }}>
           {/* details */}
-          {/* Appearance */}
-          <div className='mx-5 row row-cols-1'>
-            <h1>{item.name}</h1>
+
+          <div
+            style={{
+              color: "black",
+              backgroundColor: "rgba(255,255,255,0.8)",
+              borderRadius: "10px",
+            }}
+          >
             <div
-              className='card text-white bg-danger mb-3 col'
-              style={{ maxWidth: "35rem" }}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
             >
-              <h1>Appearance</h1>
-              <div className='card-body'>
-                <p>
-                  <b>Gender:</b> {item.appearance.gender}{" "}
-                </p>
-                <p>
-                  <b>Race:</b> {item.appearance.race}
-                </p>
-                <p>
-                  <b>Height:</b> {item.height}
-                </p>
-                <p>
-                  <b>Weight:</b> {item.weight}
-                </p>
-                <p>
-                  <b>Eye Color:</b> {item.appearance.eyeColor}
-                </p>
-                <p>
-                  <b>Hair Color:</b> {item.appearance.hairColor}
-                </p>
-              </div>
-            </div>
-            {/* Biography */}
-            <div
-              className='card text-white bg-primary mb-3 col'
-              style={{ maxWidth: "35rem" }}
-            >
-              <h1>Biography</h1>
-              <div className='card-body'>
+              <h1 style={{ color: "#9F0013", padding: "2rem" }}>
+                {item.name} Biography{" "}
+              </h1>
+
+              <div
+                style={{
+                  textAlign: "start",
+                  marginBottom: "2rem",
+                  padding: "2rem",
+                }}
+              >
                 <p>
                   <b>Full Name:</b> {item.biography.fullName}{" "}
                 </p>
@@ -85,30 +84,6 @@ export default function ModalDetails(props) {
                 <p>
                   <b>Publisher:</b> {item.biography.publisher}
                 </p>
-              </div>
-            </div>
-            {/* occupation */}
-            <div
-              className='card text-white bg-success mb-3 col'
-              style={{ maxWidth: "35rem" }}
-            >
-              <h1>Work</h1>
-              <div className='card-body'>
-                <p>
-                  <b>Occupation:</b> {item.work.occupation}{" "}
-                </p>
-                <p>
-                  <b>Base:</b> {item.work.base}
-                </p>
-              </div>
-            </div>
-            {/* connections */}
-            <div
-              className='card text-white bg-info mb-3 col'
-              style={{ maxWidth: "35rem" }}
-            >
-              <h1>Connections</h1>
-              <div className='card-body'>
                 <p>
                   <b>Group Affiliation:</b> {item.connections.groupAffiliation}
                 </p>
@@ -116,23 +91,25 @@ export default function ModalDetails(props) {
                   <b>Relatives:</b> {item.connections.relatives}
                 </p>
               </div>
+              <div style={{ textAlign: "center" }}>
+                <Button
+                  variant='contained'
+                  color='error'
+                  sx={{
+                    color: "#ffffff",
+                    bottom: "1rem",
+                    zIndex: "90",
+                    backgroundColor: "#9F0013",
+                  }}
+                  onClick={handleClose}
+                >
+                  Close
+                </Button>
+              </div>
             </div>
           </div>
-          {/* <Typography>{item.name}</Typography>
-          <ListItem>
-            <ListItemText
-              primary={item.appearance.eyeColor}
-              secondary={item.appearance.eyeColor}
-            />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary='Work' secondary='Jan 7, 2014' />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary='Vacation' secondary='July 20, 2014' />
-          </ListItem> */}
         </List>
-      </Modal>
+      </Dialog>
     </div>
   );
 }

@@ -1,43 +1,43 @@
-import React, { useState } from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Box from "@material-ui/core/Box";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import React from "react";
+import { AppBar, Box, Toolbar, Typography, Link } from "@material-ui/core";
 
-import SideBar from "../sideBar";
+import MenuIcon from "@mui/icons-material/Menu";
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import HomeIcon from "@mui/icons-material/Home";
 
 export default function ButtonAppBar() {
-  const [isOpen, SetIsOpen] = useState(false);
-
-  const handleDrawer = () => {
-    SetIsOpen(isOpen === false ? true : false);
-  };
-
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position='static'>
+      <AppBar position='static' sx={{ backgroundColor: "#202020" }}>
         <Toolbar>
-          <IconButton
-            onClick={() => SetIsOpen(isOpen === false ? true : false)}
-            size='large'
-            edge='start'
-            color='inherit'
-            aria-label='menu'
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+          <Link href='/'>
+            <HomeIcon
+              size='large'
+              edge='start'
+              color='error'
+              aria-label='menu'
+              sx={{ mr: 2 }}
+            >
+              <MenuIcon />
+            </HomeIcon>
+          </Link>
 
           <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
             Battle Heroes
           </Typography>
+          <Link href='/list'>
+            <ListAltIcon
+              size='large'
+              edge='end'
+              color='error'
+              aria-label='menu'
+              sx={{ mr: 2 }}
+            >
+              <MenuIcon />
+            </ListAltIcon>
+          </Link>
         </Toolbar>
       </AppBar>
-      {isOpen === true ? (
-        <SideBar isOpen={isOpen} handleDrawer={handleDrawer} />
-      ) : null}
     </Box>
   );
 }

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { ListItem, ListItemText, ListItemIcon, Box } from "@material-ui/core";
-import CheckTwoToneIcon from "@mui/icons-material/CheckTwoTone";
+
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 export default function ListItemComponent(props) {
-  const [colorIcon] = useState(["red", "green"]);
+  const [colorIcon] = useState(["#9F0013", "#0B4619"]);
   const { player1Intelligence, player2Intelligence, paddingLeft, tg } = props;
 
   return (
@@ -19,7 +20,7 @@ export default function ListItemComponent(props) {
             disableTypography
           />
           <ListItemIcon>
-            <CheckTwoToneIcon
+            <CheckCircleIcon
               sx={{
                 pl: paddingLeft,
                 color:
@@ -31,7 +32,7 @@ export default function ListItemComponent(props) {
       ) : (
         <ListItem disablePadding>
           <ListItemIcon>
-            <CheckTwoToneIcon
+            <CheckCircleIcon
               sx={{
                 pl: paddingLeft,
                 color:

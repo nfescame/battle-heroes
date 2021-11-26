@@ -9,6 +9,7 @@ export default function Alerts(props) {
       sx={{
         width: "100%",
         position: "fixed",
+        top: "1rem",
         zIndex: "100",
         display: "flex",
         justifyContent: "center",

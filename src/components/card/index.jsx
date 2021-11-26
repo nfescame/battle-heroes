@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardContent,
@@ -6,7 +6,6 @@ import {
   Typography,
   CardActionArea,
   Button,
-  Stack,
 } from "@material-ui/core";
 
 import ModalDetails from "../modalDetails";
@@ -14,13 +13,28 @@ import ModalDetails from "../modalDetails";
 export default function CardHeroes(props) {
   const { item, handleBattle } = props;
 
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <Card sx={{ maxWidth: "100%", borderRadius: "10px" }}>
-      <ModalDetails item={item} />
-      <CardActionArea>
-        <CardMedia component='img' image={item.images.sm} alt={item.name} />
+      <ModalDetails
+        item={item}
+        handleClose={handleClose}
+        handleOpen={handleOpen}
+        open={open}
+      />
 
-        <CardContent sx={{ backgroundColor: "#1976D2" }}>
+      <CardActionArea>
+        <CardMedia
+          component='img'
+          image={item.images.sm}
+          alt={item.name}
+          sx={{ borderTopLeftRadius: "10px", borderTopRightRadius: "10px" }}
+        />
+
+        <CardContent sx={{ backgroundColor: "#202020" }}>
           <Typography
             sx={{
               width: "100%",
@@ -35,17 +49,23 @@ export default function CardHeroes(props) {
           >
             {item.name}
           </Typography>
-
-          <Stack direction='row' spacing={2}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
             <Button
               onClick={() => {
                 handleBattle(item);
               }}
               variant='contained'
+              color='error'
+              sx={{ backgroundColor: "#9F0013" }}
             >
               Select
             </Button>
-          </Stack>
+          </div>
         </CardContent>
       </CardActionArea>
     </Card>

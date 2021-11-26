@@ -83,7 +83,7 @@ export default function DialogBattle(props) {
       <Typography
         component={"span"}
         variant={"body2"}
-        sx={{ color: "green", fontSize: "2rem" }}
+        sx={{ color: "#9F0013", fontSize: "2rem", fontWeight: "bold" }}
       >
         Winner{" "}
         <Typography
@@ -282,7 +282,12 @@ export default function DialogBattle(props) {
         </Grid>
       </Grid>
 
-      <Button variant='contained' onClick={handleClose} autoFocus>
+      <Button
+        variant='contained'
+        color='error'
+        sx={{ backgroundColor: "#9F0013" }}
+        onClick={handleClose}
+      >
         Close
       </Button>
     </Dialog>

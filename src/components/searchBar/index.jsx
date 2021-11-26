@@ -49,11 +49,16 @@ export default function SearchBar(props) {
           handleChange(e.target.value);
           setSearch(e.target.value);
         }}
-        sx={{ m: 1, width: "100%" }}
+        sx={{
+          m: 2,
+          width: "100%",
+          borderRadius: "5px",
+          backgroundColor: "white",
+        }}
       />
       <TextField
         id='outlined-select-currency'
-        label='Select publisher'
+        label='Publisher'
         value={currency}
         onChange={(e) => {
           handleChangePublisher(e.target.value);
