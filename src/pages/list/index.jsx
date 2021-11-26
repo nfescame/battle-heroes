@@ -97,16 +97,8 @@ export default function ListHeroes() {
       <Grid container spacing={3}>
         {state.map((item) => {
           return (
-            <Grid
-              onClick={() => handleBattle(item)}
-              key={item.id}
-              item
-              lg={2}
-              md={3}
-              sm={4}
-              xs={12}
-            >
-              {<CardHeroe item={item} />}
+            <Grid key={item.id} item lg={2} md={3} sm={4} xs={12}>
+              {<CardHeroe item={item} handleBattle={handleBattle} />}
             </Grid>
           );
         })}

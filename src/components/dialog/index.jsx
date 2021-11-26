@@ -3,8 +3,6 @@ import {
   Button,
   Dialog,
   CardContent,
-  Card,
-  CardActionArea,
   CardMedia,
   Typography,
   Box,
@@ -101,32 +99,28 @@ export default function DialogBattle(props) {
         <Grid item lg={4} md={4} sm={4} xs={12}>
           {/* card 1 */}
           <Box sx={{ display: "flex" }}>
-            <Card sx={{ maxWidth: "100%", borderRadius: "10px" }}>
-              <CardActionArea>
-                <CardMedia
-                  component='img'
-                  image={selectBattle.player1.images.sm}
-                  alt={selectBattle.player1.name}
-                />
+            <Box>
+              <CardMedia
+                component='img'
+                image={selectBattle.player1.images.sm}
+                alt={selectBattle.player1.name}
+              />
 
-                <CardContent sx={{ backgroundColor: "#1976D2" }}>
-                  <Typography
-                    sx={{
-                      height: "5rem",
-                      textAlign: "start",
-                      color: "white",
-                      fontSize: "1rem",
-                    }}
-                    className='title'
-                    gutterBottom
-                    variant='h6'
-                    component='div'
-                  >
-                    {selectBattle.player1.name}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+              <Typography
+                sx={{
+                  height: "5rem",
+                  textAlign: "start",
+                  color: "white",
+                  fontsize: "10rem",
+                }}
+                className='title'
+                gutterBottom
+                variant='h6'
+                component='div'
+              >
+                {selectBattle.player1.name}
+              </Typography>
+            </Box>
 
             <CardContent sx={{ paddingRight: "0" }}>
               <List>
@@ -262,39 +256,33 @@ export default function DialogBattle(props) {
               </List>
             </CardContent>
 
-            <Card sx={{ maxWidth: "100%", borderRadius: "10px" }}>
-              <CardActionArea>
-                <CardMedia
-                  component='img'
-                  image={selectBattle.player2.images.sm}
-                  alt={selectBattle.player2.name}
-                />
+            <Box>
+              <CardMedia
+                component='img'
+                image={selectBattle.player2.images.sm}
+                alt={selectBattle.player2.name}
+              />
 
-                <CardContent sx={{ backgroundColor: "#1976D2" }}>
-                  <Typography
-                    sx={{
-                      height: "5rem",
-                      textAlign: "end",
-                      color: "white",
-                      fontsize: "1rem",
-                    }}
-                    className='title'
-                    gutterBottom
-                    variant='h6'
-                    component='div'
-                  >
-                    {selectBattle.player2.name}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+              <Typography
+                sx={{
+                  height: "5rem",
+                  textAlign: "end",
+                  color: "white",
+                  fontsize: "1rem",
+                }}
+                className='title'
+                gutterBottom
+                variant='h6'
+                component='div'
+              >
+                {selectBattle.player2.name}
+              </Typography>
+            </Box>
           </Box>
         </Grid>
       </Grid>
 
-      {/* </Box> */}
-
-      <Button onClick={handleClose} autoFocus>
+      <Button variant='contained' onClick={handleClose} autoFocus>
         Close
       </Button>
     </Dialog>
