@@ -48,7 +48,8 @@ export default function DialogBattle(props) {
             selectBattle.player2.powerstats.power +
             selectBattle.player2.powerstats.combat,
         ];
-        if (totalPowerstatsP1 > totalPowerstatsP2) {
+        console.log(totalPowerstatsP1, totalPowerstatsP2);
+        if (parseInt(totalPowerstatsP1) > parseInt(totalPowerstatsP2)) {
           setWinner(selectBattle.player1.name);
         } else {
           setWinner(selectBattle.player2.name);

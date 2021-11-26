@@ -19,8 +19,6 @@ export const Auth = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(provider);
-
   return (
     <AuthContext.Provider value={{ provider, loading }}>
       {props.children}
