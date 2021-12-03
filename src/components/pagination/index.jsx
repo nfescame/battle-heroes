@@ -2,7 +2,7 @@ import React from "react";
 import { Pagination, Stack } from "@material-ui/core";
 import { AuthContext } from "../../providers/auth";
 
-export default function PaginationBasic() {
+export default function PaginationBasic(props) {
   const data = React.useContext(AuthContext);
   const pageNumber = [];
 

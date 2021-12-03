@@ -9,7 +9,7 @@ export default function SearchBar(props) {
   const [search, setSearch] = useState("");
   const [currency, setCurrency] = useState("");
   const [publisher, setPublisher] = useState([]);
-  const { handleChange, handleChangePublisher } = props;
+  const { HandleSearch, handleChangePublisher } = props;
 
   useEffect(() => {
     const getPublisher = async () => {
@@ -46,7 +46,7 @@ export default function SearchBar(props) {
         label='Search'
         value={search}
         onChange={(e) => {
-          handleChange(e.target.value);
+          HandleSearch(e.target.value);
           setSearch(e.target.value);
         }}
         sx={{

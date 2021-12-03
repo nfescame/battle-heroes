@@ -14,7 +14,6 @@ import { AuthContext } from "../../providers/auth";
 
 export default function ListHeroes() {
   const data = React.useContext(AuthContext);
-
   const [isOpenAlert, setIsOpenAlert] = useState(false);
   const [isOpenAlertInfo, setIsOpenAlertInfo] = useState(false);
   const [isOpenDialog, setIsOpenDialog] = useState(false);
@@ -23,6 +22,8 @@ export default function ListHeroes() {
     player1: {},
     player2: {},
   });
+
+  //initialize
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -35,16 +36,17 @@ export default function ListHeroes() {
     fetchPosts();
   }, [data]);
 
-  function handleChange(e) {
-    let newArr = [];
-    data.provider.map((item) => {
-      if (item.name.toLowerCase().includes(e.toLowerCase())) {
-        newArr.push(item);
-      }
-      return item;
-    });
-    setState(newArr);
+  // search
+
+  function HandleSearch(e) {
+    const result = data.provider.filter((provider) =>
+      provider.name.toLowerCase().includes(e.toLowerCase())
+    );
+    setState(result);
   }
+
+  // search publisher
+
   function handleChangePublisher(e) {
     let newArr = [];
     data.provider.map((item) => {
@@ -56,12 +58,16 @@ export default function ListHeroes() {
     setState(newArr);
   }
 
+  // verification object empty
+
   function objEmpty(obj) {
     for (const prop in obj) {
       if (obj.hasOwnProperty(prop)) return false;
     }
     return true;
   }
+
+  // select character for battle
 
   function handleBattle(Heroe) {
     if (objEmpty(selectBattle.player1) === true) {
@@ -87,6 +93,8 @@ export default function ListHeroes() {
     }
   }
 
+  // close modal battle
+
   const handleClose = () => {
     setIsOpenDialog(false);
     setSelectBattle({
@@ -95,6 +103,7 @@ export default function ListHeroes() {
     });
   };
 
+  // button navegation
   const scrollTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -113,7 +122,7 @@ export default function ListHeroes() {
       ) : null}
       <Pagination />
       <Search
-        handleChange={handleChange}
+        HandleSearch={HandleSearch}
         handleChangePublisher={handleChangePublisher}
       />
       {data.loading === true ? (

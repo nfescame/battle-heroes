@@ -37,6 +37,7 @@ export const Auth = (props) => {
         postsPerPage,
         totalPosts,
         setCurrentPage,
+        setProviders,
       }}
     >
       {props.children}
