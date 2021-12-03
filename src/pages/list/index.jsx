@@ -8,6 +8,7 @@ import Alerts from "../../components/alert";
 import AlertsInfo from "../../components/alertInfo";
 import Spinner from "../../components/spinner";
 import ButtonTop from "../../components/buttonTop";
+import Pagination from "../../components/pagination";
 
 import { AuthContext } from "../../providers/auth";
 
@@ -25,7 +26,7 @@ export default function ListHeroes() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const allList = data.provider.map((item) => {
+      const allList = data.currentPosts.map((item) => {
         return item;
       });
       setState(allList);
@@ -110,7 +111,7 @@ export default function ListHeroes() {
       {isOpenAlertInfo === true ? (
         <AlertsInfo selectHeroesName={selectBattle.player1.name} />
       ) : null}
-
+      <Pagination />
       <Search
         handleChange={handleChange}
         handleChangePublisher={handleChangePublisher}

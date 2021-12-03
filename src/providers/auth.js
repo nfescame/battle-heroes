@@ -6,6 +6,8 @@ export const AuthContext = React.createContext({});
 export const Auth = (props) => {
   const [provider, setProviders] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(6);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -19,8 +21,24 @@ export const Auth = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  //get current post
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = provider.slice(indexOfFirstPost, indexOfLastPost);
+
+  const totalPosts = provider.length;
+
   return (
-    <AuthContext.Provider value={{ provider, loading }}>
+    <AuthContext.Provider
+      value={{
+        currentPosts,
+        loading,
+        provider,
+        postsPerPage,
+        totalPosts,
+        setCurrentPage,
+      }}
+    >
       {props.children}
     </AuthContext.Provider>
   );
