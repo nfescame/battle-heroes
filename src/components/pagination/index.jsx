@@ -11,7 +11,9 @@ export default function PaginationBasic() {
   }
 
   const handleChange = (event, value) => {
-    data.setCurrentPage(value);
+    if (value) {
+      data.setCurrentPage(value);
+    }
   };
 
   return (
