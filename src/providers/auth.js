@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import api from "../apis/api";
+import { api } from "../apis/api";
 
 export const AuthContext = React.createContext({});
 
@@ -12,7 +12,7 @@ export const Auth = (props) => {
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
-      const res = await api.get();
+      const res = await api.get("/all.json");
       setProviders(res.data);
       setLoading(false);
     };

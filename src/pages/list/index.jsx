@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Box, Grid } from "@material-ui/core";
 
 import Search from "../../components/searchBar";
@@ -8,7 +9,6 @@ import Alerts from "../../components/alert";
 import AlertsInfo from "../../components/alertInfo";
 import Spinner from "../../components/spinner";
 import ButtonTop from "../../components/buttonTop";
-import Pagination from "../../components/pagination";
 
 import { AuthContext } from "../../providers/auth";
 
@@ -38,12 +38,25 @@ export default function ListHeroes() {
 
   // search
 
-  function HandleSearch(e) {
-    const result = data.provider.filter((provider) =>
-      provider.name.toLowerCase().includes(e.toLowerCase())
-    );
-    setState(result);
-  }
+  const HandleSearch = async (e) => {
+    let newArr = [];
+    try {
+      const response = await axios.get(
+        `https://akabab.github.io/superhero-api/api/all.json`
+      );
+
+      newArr = [];
+      response.data.map((hero) => {
+        if (hero.name.toLowerCase().includes(e.toLowerCase())) {
+          newArr.push(hero);
+        }
+        return hero;
+      });
+      setState(newArr);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   // search publisher
 
@@ -120,7 +133,7 @@ export default function ListHeroes() {
       {isOpenAlertInfo === true ? (
         <AlertsInfo selectHeroesName={selectBattle.player1.name} />
       ) : null}
-      <Pagination />
+
       <Search
         HandleSearch={HandleSearch}
         handleChangePublisher={handleChangePublisher}

@@ -11,6 +11,16 @@ export default function SearchBar(props) {
   const [publisher, setPublisher] = useState([]);
   const { HandleSearch, handleChangePublisher } = props;
 
+  // useEffect(() => {
+  //   const fetchPosts = async () => {
+  //     const res = await apiName.get(`/${search}`);
+  //     setPublisher(res.data);
+  //   };
+
+  //   fetchPosts();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
+
   useEffect(() => {
     const getPublisher = async () => {
       try {
